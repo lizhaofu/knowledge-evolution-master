@@ -1,0 +1,36 @@
+\section{Problem Formulation}
+\label{sec:problem}
+
+In this section, we first present several necessary definitions and then define the tasks of temporal summarization.
+
+\begin{definition}
+\textbf{(Document)}:
+We define a document $d$ as a sequence of $N_d$ terms, denoted as $\mathbf{w}_d$, where each term is chosen from a vocabulary of size $V$.
+\end{definition}
+
+
+\begin{definition}
+\textbf{(Document Cluster)}: A document cluster, denoted as $C_q$, contains a set of documents relevant to the query $q$. The relevance can be considered as either syntax relevance (containing words in the query) or semantic relevance (containing relevant information of the query).
+\end{definition}
+
+
+\begin{definition}
+\textbf{(Representative Term)}: Along the development of science, some concepts may dominate the research area in a specific period of time. For example, the concept deep learning is dominating the field of machine learning right now.
+\end{definition}
+
+\begin{definition}
+\textbf{(Evolutionary Trend)}: An evolutionary trend $\mu$ of a document cluster $C$ is a set of term clusters over time, where terms can be assigned into different clusters at different time slides. Each document cluster is considered as a mixture of multiple topic models. The assumption of this model is that words in the document are sampled following word distributions corresponding to each topic, i.e., p(wjµ). Therefore, words with the highest probability in the distribution would suggest the semantics represented by the topic.
+\end{definition}
+
+The document cluster denotes the information source and the query denotes the information need. A document cluster is a sub set of the entire document collection. All documents in the cluster are related to the query. Thus, we can define the task of query-oriented temporal summarization as:
+
+\begin{definition}
+\textbf{(Query-based Temporal Summarization)}: Given a document collection $D$ and a query $q$ cluster $C$, the task of query-based temporal summarization is to identify the most representative terms and extract the evolutionary trend for the query, from the document cluster. Documents related to a query may talk about different perspectives of the query. For example, for the query "data mining", the topical aspects may include "classification", "clustering", and "association rule". Accordingly, we give definitions of the topic model and the query-oriented topic model of a document cluster.
+\end{definition}
+
+
+For the example of "data mining", suppose the query is about data mining application, we may only want to high-light topics related to applications of data mining algorithms
+and treat the other topics in the second place. Table 1 summarizes the notations.
+Based on these definitions, the major task of query-oriented summarization can be defined as follows: given a query and a document collection, the goal is to retrieve a
+document cluster related to the query and summarize the document cluster from different topical aspects of the query. It is challenging to perform the task defined above.
+First, existing topic models only consider the general topic distribution of multiple documents, but cannot capture the query information. It is challenging on how to incorporate the query information into the topic model and how to discriminate the different topics in the document cluster in a principled way. Second, it is unclear how to make use of the modeling results to calculate the score of each sentence and how to generate the final summarization result.
